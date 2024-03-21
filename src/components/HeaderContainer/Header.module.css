@@ -1,0 +1,21 @@
+.Header{
+    position:sticky;
+    height: 13vh;
+    top: 0;
+    z-index: 20;
+    background-color: darkgray;
+}
+.block_menu{
+    display: flex;
+}
+.block_service{
+    width: 50vw;
+    display: flex;
+    justify-content: space-between;
+}
+.block_button{
+    width: 50vw;
+}
+.block_search{
+    width: 40%;
+}

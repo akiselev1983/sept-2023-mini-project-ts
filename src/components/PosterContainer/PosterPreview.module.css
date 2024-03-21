@@ -1,0 +1,11 @@
+.poster_view{
+    width: 100%;
+    height: 90%;
+}
+.poster_view img{
+    width: 100%;
+    height: 100%;
+    border-radius: 1em 1em 0 0;
+    margin: 0;
+    object-fit: fill;
+}

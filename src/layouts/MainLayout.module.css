@@ -1,0 +1,11 @@
+.MainLayout{
+    margin: 0;
+    align-content: center;
+    /*background-color: black;*/
+}
+
+.block_main{
+    width: 75vw;
+    margin: auto;
+    padding-top: 1%;
+}

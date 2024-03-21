@@ -1,0 +1,43 @@
+.main{
+    margin: 0;
+    height: 80vh;
+}
+.title{
+    text-align: center;
+    font-size: 30px;
+}
+.flex{
+    display: flex;
+    justify-content: space-evenly;
+}
+.info{
+    width: 50%;
+    padding-top: 5%;
+}
+
+
+.poster img{
+    margin: 0;
+    width: 80%;
+    border-radius: 15px;
+}
+.overview{
+    text-align: center;
+}
+.overview p{
+    font-size: 22px;
+}
+.block_link{
+    display: flex;
+    align-items: center;
+}
+.block_link a{
+    text-decoration: none;
+    font-size: 20px;
+    color: goldenrod;
+    margin-left: 1vw;
+}
+.block_link a:hover{
+    text-decoration: underline;
+    color: red;
+}
