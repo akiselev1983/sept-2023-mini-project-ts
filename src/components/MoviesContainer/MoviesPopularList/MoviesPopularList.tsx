@@ -2,20 +2,18 @@ import React, {useEffect} from 'react';
 
 import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {movieActions} from "../../../store";
+import css from "../MoviesList/MoviesList.module.css";
 import MoviesListCard from "../MoviesListCard/MoviesListCard";
-import css from './MoviesList.module.css'
 import PaginationBlock from "../../Pagination/PaginationBlock";
 
-const MoviesList = () => {
-
+const MoviesPopularList = () => {
     const {results, page} = useAppSelector(state => state.movies)
     const dispatch = useAppDispatch()
 
-
     useEffect(() => {
-        dispatch(movieActions.getAll({page}))
+        dispatch(movieActions.getAllPopularMovies({page}))
 
-    }, [page]);
+    }, [page, dispatch]);
 
     return (
         <div className={css.main}>
@@ -29,4 +27,4 @@ const MoviesList = () => {
     );
 };
 
-export default MoviesList;
+export default MoviesPopularList;

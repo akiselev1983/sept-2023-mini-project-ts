@@ -1,6 +1,7 @@
-import {createAsyncThunk, createSlice, isFulfilled} from "@reduxjs/toolkit";
-import {IGenre} from "../../interfaces";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
+
+import {IGenre} from "../../interfaces";
 import {genreService} from "../../services";
 
 interface IState {

@@ -1,17 +1,23 @@
 import React from 'react';
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {movieActions} from "../../store";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {movieActions} from "../../store";
+
+
 const PaginationBlock = () => {
-    const {page, total_pages} = useAppSelector(state => state.movies)
+    let {page, total_pages} = useAppSelector(state => state.movies)
+    const {checkedTheme} = useAppSelector(state => state.theme)
     const dispatch = useAppDispatch()
+
+    if (total_pages>500) {
+        total_pages = 500
+    }
 
     const handleChange = (event:React.ChangeEvent<unknown>, value:number) => {
         dispatch(movieActions.setPage(value))
     };
-
 
     return (
         <div>
@@ -22,6 +28,10 @@ const PaginationBlock = () => {
                             shape="rounded"
                             onChange={handleChange}
                             size={"large"}
+                            style={{
+                                backgroundColor: checkedTheme ? '#fff' : '#b7b3b3',
+                                color: checkedTheme ? '#000' : '#fff',
+                            }}
                 />
             </Stack>
         </div>

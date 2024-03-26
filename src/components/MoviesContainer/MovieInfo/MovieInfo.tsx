@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react';
 import {Link, useParams} from "react-router-dom";
+import {StarRating} from "star-rating-react-ts";
+
 import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {movieInfoActions} from "../../../store/slices/MovieInfoSlice";
 import PosterPreview from "../../PosterContainer/PosterPreview";
 import css from './MovieInfo.module.css'
-import {StarRating} from "star-rating-react-ts";
+
 
 const MovieInfo = () => {
     const {movieId} = useParams()
@@ -13,8 +15,8 @@ const MovieInfo = () => {
     const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(movieInfoActions.getMovieById({id:movieId}))
-    }, [movieId]);
-    console.log(movieInfo);
+    }, [movieId, dispatch]);
+
     if (!movieInfo) return;
 
     const {title,poster_path, overview, vote_average, runtime, release_date, genres} = movieInfo
@@ -31,7 +33,7 @@ const MovieInfo = () => {
                     <StarRating numStars={10} initialRating={vote_average} readOnly={false} />
                     <div className={css.block_link}>
                         <h2>Genre: </h2>
-                        {genres.map(genre=> <div><Link to={`/movies/genre/${genre.id}`}>{genre.name}</Link></div>)}
+                        {genres.map((genre, index)=> <div key={index}><Link to={`/movies/genre/${genre.id}`}>{genre.name}</Link></div>)}
                     </div>
                     <h2>Runtime: {runtime}min</h2>
                     <h2>Release date: {release_date}</h2>

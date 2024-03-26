@@ -10,7 +10,8 @@ const urls = {
     movies:{
         getAll:`/discover${movies}`,
         byId:(id:string):string=> `${movies}/${id}`,
-        searchMovie:`/search${movies}`
+        searchMovie:`/search${movies}`,
+        getAllPopular:`${movies}/popular`
     },
     genres:{
         getAll: `${genres}${movies}/list`,

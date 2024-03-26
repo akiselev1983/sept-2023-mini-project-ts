@@ -1,12 +1,9 @@
-import React, {FC} from 'react';
+import React from 'react';
+import {useNavigate} from "react-router-dom";
+import {InputBase} from "@mui/material";
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
-import {InputBase} from "@mui/material";
-import {useNavigate} from "react-router-dom";
 
-// interface IProps {
-//     onSearch: (searchTerm: string) => void;
-// }
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -55,8 +52,7 @@ const SearchPanel = () => {
     const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const search = (event.currentTarget.elements.namedItem('search') as HTMLInputElement)?.value;
-        console.log(search);
-        // onSearch(searchTerm);
+
         if(search.trim().length>0){
             navigate(`/search/movies?search=${search}`)
             event.currentTarget.reset();

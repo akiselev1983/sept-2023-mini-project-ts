@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "../../hooks";
+
 import {genreActions} from "../../store/slices/genreSlice";
 import GenreBadge from "./GenreBadge";
+import {useAppDispatch, useAppSelector} from "../../hooks";
 import css from './Genre.module.css'
 
 const GenresBadge = () => {

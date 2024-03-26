@@ -1,14 +1,16 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "../hooks";
+import {useParams} from "react-router-dom";
+
 import {movieActions} from "../store";
+import {useAppDispatch, useAppSelector} from "../hooks";
 import css from "../components/MoviesContainer/MoviesList/MoviesList.module.css";
 import MoviesListCard from "../components/MoviesContainer/MoviesListCard/MoviesListCard";
 import PaginationBlock from "../components/Pagination/PaginationBlock";
-import {useParams} from "react-router-dom";
+
 
 const GenrePage = () => {
     const {id} = useParams()
-    console.log(id);
+
     const {results, page} = useAppSelector(state => state.movies)
     const dispatch = useAppDispatch()
 

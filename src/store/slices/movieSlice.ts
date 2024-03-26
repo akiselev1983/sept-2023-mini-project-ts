@@ -1,7 +1,9 @@
 import {createAsyncThunk, createSlice, isFulfilled} from "@reduxjs/toolkit";
-import {IMovie, IPagination} from "../../interfaces";
-import {AxiosError} from "axios";
-import {movieService} from "../../services/movieService";
+import {AxiosError} from "axios"
+
+import {IPagination} from "../../interfaces";
+import {movieService} from "../../services";
+
 
 interface IState extends IPagination{
 
@@ -48,6 +50,18 @@ const getAllBySearch = createAsyncThunk<IState, {page:string, search:string}>(
         }
     }
 )
+const getAllPopularMovies = createAsyncThunk<IState, {page:string}>(
+    'movieSlice/getAllPopularMovies',
+    async ({page}, {rejectWithValue}) =>{
+        try {
+            const {data} = await movieService.getAllPopularMovies(page)
+            return data
+        }catch (e) {
+            const err = e as AxiosError
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
 
 const movieSlice = createSlice({
     name:'movieSlice',
@@ -59,14 +73,14 @@ const movieSlice = createSlice({
     },
     extraReducers:builder =>
         builder
-            .addCase(getAllBySearch.fulfilled, (state, action) => {
-                const {results, total_results, total_pages, page} = action.payload
-                state.results = results
-                state.page = page
-                state.total_pages = total_pages
-                state.total_results = total_results
-            })
-            .addMatcher(isFulfilled(getAll, getAllByGenreId), (state, action) => {
+            // .addCase(getAllBySearch.fulfilled, (state, action) => {
+            //     const {results, total_results, total_pages, page} = action.payload
+            //     state.results = results
+            //     state.page = page
+            //     state.total_pages = total_pages
+            //     state.total_results = total_results
+            // })
+            .addMatcher(isFulfilled(getAll, getAllByGenreId, getAllBySearch, getAllPopularMovies), (state, action) => {
                 if (action.payload){
                     const {results, total_results, total_pages, page} = action.payload
                     state.results = results
@@ -83,7 +97,8 @@ const movieActions = {
     ...actions,
     getAll,
     getAllByGenreId,
-    getAllBySearch
+    getAllBySearch,
+    getAllPopularMovies
 }
 
 export {movieActions, movieReducer}

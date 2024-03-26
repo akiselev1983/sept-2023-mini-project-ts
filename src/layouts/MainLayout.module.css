@@ -1,11 +1,17 @@
+.MainLayout_dark{
+    margin: 0;
+    align-content: center;
+    background-color: black;
+    color: snow;
+}
 .MainLayout{
     margin: 0;
     align-content: center;
-    /*background-color: black;*/
 }
 
 .block_main{
     width: 75vw;
+    height: 100%;
     margin: auto;
     padding-top: 1%;
 }

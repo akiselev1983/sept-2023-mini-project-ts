@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+
 import {posterBaseUrl} from "../../constants";
 import css from './PosterPreview.module.css'
 

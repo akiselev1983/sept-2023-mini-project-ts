@@ -1,23 +1,24 @@
 import React, {useEffect} from 'react';
+import {useSearchParams} from "react-router-dom";
+
 import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {movieActions} from "../../../store";
 import MoviesListCard from "../../MoviesContainer/MoviesListCard/MoviesListCard";
-import css from "../../MoviesContainer/MoviesList/MoviesList.module.css";
 import PaginationBlock from "../../Pagination/PaginationBlock";
-import {useLocation, useParams, useSearchParams} from "react-router-dom";
+import css from "../../MoviesContainer/MoviesList/MoviesList.module.css";
+
+
 
 const SearchMoviesList = () => {
     const {results, page} = useAppSelector(state => state.movies)
     const dispatch = useAppDispatch()
     const [query,] = useSearchParams({page:`1`})
     const search = query.get('search')
-    console.log(search);
 
 
     useEffect(() => {
         dispatch(movieActions.getAllBySearch({page, search}))
-    }, [page, search]);
-    console.log(results);
+    }, [page, search, dispatch]);
 
     return (
         <div className={css.main}>
